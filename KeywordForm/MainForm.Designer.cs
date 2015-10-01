@@ -90,8 +90,8 @@
             this.SearchTabSwitch.SelectedIndex = 0;
             this.SearchTabSwitch.Size = new System.Drawing.Size(641, 81);
             this.SearchTabSwitch.TabIndex = 3;
-            this.SearchTabSwitch.Click += new System.EventHandler(this.Google_Click);
             this.SearchTabSwitch.SelectedIndexChanged += new System.EventHandler(this.SearchTabIndexChange);
+            this.SearchTabSwitch.Click += new System.EventHandler(this.Google_Click);
             // 
             // GoogleTab
             // 
@@ -350,7 +350,8 @@
             this.ClientSize = new System.Drawing.Size(712, 430);
             this.Controls.Add(this.SearchTabSwitch);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.SearchTabSwitch.ResumeLayout(false);
             this.GoogleTab.ResumeLayout(false);
             this.GoogleTab.PerformLayout();
