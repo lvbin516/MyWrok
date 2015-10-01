@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            CCWin.SkinControl.Animation animation1 = new CCWin.SkinControl.Animation();
             this.googleSearchInput = new System.Windows.Forms.TextBox();
             this.SearchTabSwitch = new System.Windows.Forms.TabControl();
             this.GoogleTab = new System.Windows.Forms.TabPage();
@@ -54,6 +55,9 @@
             this.amazonSearchIcon = new System.Windows.Forms.PictureBox();
             this.amazonComboBox = new System.Windows.Forms.ComboBox();
             this.amazonSearchInput = new System.Windows.Forms.TextBox();
+            this.skinTabControl1 = new CCWin.SkinControl.SkinTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.SearchTabSwitch.SuspendLayout();
             this.GoogleTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.googleSearchClick)).BeginInit();
@@ -67,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.playSearchIcon)).BeginInit();
             this.AmazonTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amazonSearchIcon)).BeginInit();
+            this.skinTabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // googleSearchInput
@@ -343,11 +348,72 @@
             this.amazonSearchInput.TabIndex = 3;
             this.amazonSearchInput.TextChanged += new System.EventHandler(this.amazonSearchTextChange);
             // 
+            // skinTabControl1
+            // 
+            animation1.AnimateOnlyDifferences = false;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 2F;
+            animation1.TransparencyCoeff = 0F;
+            this.skinTabControl1.Animation = animation1;
+            this.skinTabControl1.AnimatorType = CCWin.SkinControl.AnimationType.HorizSlide;
+            this.skinTabControl1.CloseRect = new System.Drawing.Rectangle(2, 2, 12, 12);
+            this.skinTabControl1.Controls.Add(this.tabPage1);
+            this.skinTabControl1.Controls.Add(this.tabPage2);
+            this.skinTabControl1.HeadBack = null;
+            this.skinTabControl1.ImgTxtOffset = new System.Drawing.Point(0, 0);
+            this.skinTabControl1.ItemSize = new System.Drawing.Size(70, 36);
+            this.skinTabControl1.Location = new System.Drawing.Point(12, 209);
+            this.skinTabControl1.Name = "skinTabControl1";
+            this.skinTabControl1.PageArrowDown = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageArrowDown")));
+            this.skinTabControl1.PageArrowHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageArrowHover")));
+            this.skinTabControl1.PageCloseHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageCloseHover")));
+            this.skinTabControl1.PageCloseNormal = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageCloseNormal")));
+            this.skinTabControl1.PageDown = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageDown")));
+            this.skinTabControl1.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl1.PageHover")));
+            this.skinTabControl1.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
+            this.skinTabControl1.PageNorml = null;
+            this.skinTabControl1.SelectedIndex = 0;
+            this.skinTabControl1.Size = new System.Drawing.Size(637, 100);
+            this.skinTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.skinTabControl1.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(0, 36);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(637, 64);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(0, 36);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(200, 64);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 430);
+            this.Controls.Add(this.skinTabControl1);
             this.Controls.Add(this.SearchTabSwitch);
             this.Name = "Form1";
             this.Text = "MainForm";
@@ -371,6 +437,7 @@
             this.AmazonTab.ResumeLayout(false);
             this.AmazonTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amazonSearchIcon)).EndInit();
+            this.skinTabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -402,6 +469,9 @@
         private System.Windows.Forms.PictureBox amazonSearchIcon;
         private System.Windows.Forms.ComboBox amazonComboBox;
         private System.Windows.Forms.TextBox amazonSearchInput;
+        private CCWin.SkinControl.SkinTabControl skinTabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 
