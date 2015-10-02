@@ -39,7 +39,7 @@ namespace KeywordForm
                 {
                     continue;
                 }
-                this.conMap.AddOrUpdate(this.terms[i], result, null);
+                this.conMap.GetOrAdd(this.terms[i], result);
             }
         }
 
