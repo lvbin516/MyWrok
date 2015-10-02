@@ -24,11 +24,6 @@ namespace Excel
             try
             {
                 xls = new Microsoft.Office.Interop.Excel.Application();
-                if (xls == null)
-                {
-                    MessageBox.Show("无法创建Excel对象，可能你还未安装Excel!");
-                    return;
-                }
                 workbook = xls.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
                 Worksheet worksheet = workbook.Worksheets[1] as Worksheet;
                 addRange(worksheet, "C3", "D4", System.Drawing.Color.Green.ToArgb(), title, 20);

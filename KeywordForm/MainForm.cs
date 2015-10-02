@@ -31,6 +31,8 @@ namespace WindowsFormsApplication1
         private delegate void PCallBackDelegate(Object result);
         private delegate void ACallBackDelegate(Object result);
 
+        private delegate void GenExcelCallBackDelegate();
+
         private String googleKeyWord;
         private String YahooKeyWord;
         private String BingKeyWord;
@@ -366,9 +368,14 @@ namespace WindowsFormsApplication1
                     break;
 
             }
-
+            if (!checkExcel())
+            {
+                return;
+            }
             String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWord);
-            Object[] param = new object[4] { currentEngin, currentKeyWord, fileName, mTempResult };
+            GenExcelCallBackDelegate callback = excelCallBack;
+            Object[] param = new object[5] { currentEngin, currentKeyWord, fileName, mTempResult, callback };
+            
             this.export.Enabled = false;
             Thread t = new Thread(genExcel);
             t.Start(param);
@@ -378,6 +385,14 @@ namespace WindowsFormsApplication1
         {
             Object[] obj = (Object[])param;
             ExcelHelper.exportExcel((string)obj[0], (string)obj[1], (string)obj[2], (List<SearchTerm>)obj[3]);
+
+            GenExcelCallBackDelegate callback = obj[4] as GenExcelCallBackDelegate;
+            callback();
+        }
+
+        private void excelCallBack()
+        {
+            this.export.Enabled = true;
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
@@ -404,6 +419,21 @@ namespace WindowsFormsApplication1
             string saveFileName = saveDialog.FileName;
             return saveFileName;
             //MessageBox.Show("选择的文件为：\r\n" + saveFileName);
+        }
+
+        private bool checkExcel()
+        {
+            Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
+            if (xls == null)
+            {
+                MessageBox.Show("无法创建Excel对象，可能你还未安装Excel!");
+                return false;
+            }
+            else
+            {
+                xls = null;
+                return true;
+            }
         }
 
         private void ClearClick(object sender, EventArgs e)

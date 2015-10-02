@@ -24,11 +24,12 @@ namespace SearchEngin
                                               6, 7, 8, 9, 10
                                           };
 
-        private const int THREAD_NUM = 39;
+        private int THREAD_NUM = Environment.ProcessorCount; 
 
         //搜索关键字
         public List<SearchTerm> SearchKeyWordByTerm(string term)
         {
+
             if (term == null || term.Trim().Length == 0)
             {
                 return null;
