@@ -393,14 +393,14 @@ namespace SearchApplication
         private void excelCallBack()
         {
             this.export.Enabled = true;
-            MessageBoxEx.Show("Generate Excel Success");
+            MessageBoxEx.Show(this, "Generate Excel Success");
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
         {
             if (result == null || result.Count == 0)
             {
-                MessageBoxEx.Show("result is empty");
+                MessageBoxEx.Show(this, "result is empty");
                 return null;
             }
             string title = enginName + " - " + keyword;
@@ -427,7 +427,7 @@ namespace SearchApplication
             Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
             if (xls == null)
             {
-                MessageBoxEx.Show("can not creat excel. make sure you have install excel!");
+                MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
                 return false;
             }
             else
