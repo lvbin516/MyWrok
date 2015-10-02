@@ -58,6 +58,8 @@ namespace Excel
                     addCell(worksheet, i + 7, 3, System.Drawing.Color.White.ToArgb(), result[i].Term, 20);
                     addCell(worksheet, i + 7, 4, System.Drawing.Color.White.ToArgb(), result[i].Keyword, 20);
                 }
+                worksheet.SaveAs(saveFileName, XlFileFormat.xlTemplate, Type.Missing, Type.Missing, Type.Missing, 
+                    Type.Missing, XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing);
             }
             finally
             {
