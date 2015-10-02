@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="AmazonEngin.cs" />
     <Compile Include="BingEngin.cs" />
+    <Compile Include="Encrypter.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="GoogleEngin.cs" />
     <Compile Include="GooglePlayEngin.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchEnginBase.cs" />
     <Compile Include="SearchTerm.cs" />
+    <Compile Include="SearchThread.cs" />
     <Compile Include="YahooEngin.cs" />
     <Compile Include="YoutubeEngin.cs" />
     <EmbeddedResource Include="MainForm.resx">
