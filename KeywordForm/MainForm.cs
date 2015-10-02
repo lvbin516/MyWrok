@@ -367,7 +367,8 @@ namespace WindowsFormsApplication1
 
             }
 
-            Object[] param = new object[3] { currentEngin, currentKeyWord, mTempResult };
+            String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWord);
+            Object[] param = new object[4] { currentEngin, currentKeyWord, fileName, mTempResult };
             Thread t = new Thread(genExcel);
             t.Start(param);
         }
@@ -375,8 +376,33 @@ namespace WindowsFormsApplication1
         private void genExcel(Object param)
         {
             Object[] obj = (Object[])param;
-            //need modify
-            ExcelHelper.exportExcel((String)obj[0], (String)obj[1], (List<SearchTerm>)obj[2]);
+            ExcelHelper.exportExcel((string)obj[0], (string)obj[1], (string)obj[2], (List<SearchTerm>)obj[3]);
+        }
+
+        private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
+        {
+            if (result == null || result.Count == 0)
+            {
+                MessageBoxEx.Show("结果为空");
+                return null;
+            }
+            string title = enginName + " - " + keyword;
+            //选择框
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.DefaultExt = "xls";
+            saveDialog.AddExtension = true;
+            saveDialog.Filter = "Excel 文件|*.xls";
+            saveDialog.FileName = title + ".xls";
+            //保存对话框是否记忆上次打开的目录
+            saveDialog.RestoreDirectory = true;
+            DialogResult saveResult = saveDialog.ShowDialog();
+            if (saveResult == DialogResult.Cancel)
+            {
+                return null;
+            }
+            string saveFileName = saveDialog.FileName;
+            return saveFileName;
+            //MessageBox.Show("选择的文件为：\r\n" + saveFileName);
         }
 
         private void ClearClick(object sender, EventArgs e)
