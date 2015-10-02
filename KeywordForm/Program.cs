@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using SearchEngin;
 
-namespace WindowsFormsApplication1
+namespace SearchApplication
 {
     static class Program
     {

@@ -12,7 +12,7 @@ using CCWin.SkinControl;
 using System.Threading;
 using Excel;
 
-namespace WindowsFormsApplication1
+namespace SearchApplication
 {
 
     public partial class Form1 : CCSkinMain
@@ -393,13 +393,14 @@ namespace WindowsFormsApplication1
         private void excelCallBack()
         {
             this.export.Enabled = true;
+            MessageBoxEx.Show("Generate Excel Success");
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
         {
             if (result == null || result.Count == 0)
             {
-                MessageBoxEx.Show("结果为空");
+                MessageBoxEx.Show("result is empty");
                 return null;
             }
             string title = enginName + " - " + keyword;
@@ -426,7 +427,7 @@ namespace WindowsFormsApplication1
             Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
             if (xls == null)
             {
-                MessageBox.Show("无法创建Excel对象，可能你还未安装Excel!");
+                MessageBoxEx.Show("can not creat excel. make sure you have install excel!");
                 return false;
             }
             else

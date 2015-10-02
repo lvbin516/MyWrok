@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace SearchApplication
 {
     partial class Form1
     {
@@ -581,6 +581,7 @@
             this.resultListView.Location = new System.Drawing.Point(35, 178);
             this.resultListView.Name = "resultListView";
             this.resultListView.OwnerDraw = true;
+            this.resultListView.RowBackColor2 = System.Drawing.Color.White;
             this.resultListView.SelectedColor = System.Drawing.Color.White;
             this.resultListView.Size = new System.Drawing.Size(637, 210);
             this.resultListView.TabIndex = 8;
