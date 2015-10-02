@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CCWin.SkinControl.Animation animation3 = new CCWin.SkinControl.Animation();
+            CCWin.SkinControl.Animation animation1 = new CCWin.SkinControl.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.skinTabControl = new CCWin.SkinControl.SkinTabControl();
             this.google = new System.Windows.Forms.TabPage();
@@ -66,22 +66,22 @@
             // 
             // skinTabControl
             // 
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 1F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.skinTabControl.Animation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 1F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.skinTabControl.Animation = animation1;
             this.skinTabControl.AnimatorType = CCWin.SkinControl.AnimationType.Leaf;
             this.skinTabControl.CloseRect = new System.Drawing.Rectangle(2, 2, 12, 12);
             this.skinTabControl.Controls.Add(this.google);
@@ -97,12 +97,14 @@
             this.skinTabControl.Name = "skinTabControl";
             this.skinTabControl.PageArrowDown = ((System.Drawing.Image)(resources.GetObject("skinTabControl.PageArrowDown")));
             this.skinTabControl.PageArrowHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl.PageArrowHover")));
+            this.skinTabControl.PageBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.skinTabControl.PageCloseHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl.PageCloseHover")));
             this.skinTabControl.PageCloseNormal = ((System.Drawing.Image)(resources.GetObject("skinTabControl.PageCloseNormal")));
             this.skinTabControl.PageDown = ((System.Drawing.Image)(resources.GetObject("skinTabControl.PageDown")));
             this.skinTabControl.PageHover = ((System.Drawing.Image)(resources.GetObject("skinTabControl.PageHover")));
             this.skinTabControl.PageImagePosition = CCWin.SkinControl.SkinTabControl.ePageImagePosition.Left;
             this.skinTabControl.PageNorml = null;
+            this.skinTabControl.PagePalace = true;
             this.skinTabControl.SelectedIndex = 0;
             this.skinTabControl.Size = new System.Drawing.Size(637, 76);
             this.skinTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -111,6 +113,7 @@
             // 
             // google
             // 
+            this.google.BackColor = System.Drawing.Color.White;
             this.google.Controls.Add(this.googleSearch);
             this.google.Controls.Add(this.googleInput);
             this.google.Location = new System.Drawing.Point(0, 36);
@@ -119,12 +122,12 @@
             this.google.Size = new System.Drawing.Size(637, 40);
             this.google.TabIndex = 0;
             this.google.Text = "Google";
-            this.google.UseVisualStyleBackColor = true;
             this.google.Click += new System.EventHandler(this.Google_Click);
             // 
             // googleSearch
             // 
             this.googleSearch.BackColor = System.Drawing.Color.Transparent;
+            this.googleSearch.BaseColor = System.Drawing.Color.DodgerBlue;
             this.googleSearch.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.googleSearch.DownBack = null;
             this.googleSearch.Location = new System.Drawing.Point(545, 3);
@@ -181,6 +184,7 @@
             // 
             // Yahoo
             // 
+            this.Yahoo.BackColor = System.Drawing.Color.White;
             this.Yahoo.Controls.Add(this.YahooSearch);
             this.Yahoo.Controls.Add(this.YahooInput);
             this.Yahoo.Location = new System.Drawing.Point(0, 36);
@@ -189,12 +193,12 @@
             this.Yahoo.Size = new System.Drawing.Size(637, 40);
             this.Yahoo.TabIndex = 1;
             this.Yahoo.Text = "Yahoo";
-            this.Yahoo.UseVisualStyleBackColor = true;
             this.Yahoo.Click += new System.EventHandler(this.YahooTabClick);
             // 
             // YahooSearch
             // 
             this.YahooSearch.BackColor = System.Drawing.Color.Transparent;
+            this.YahooSearch.BaseColor = System.Drawing.Color.DodgerBlue;
             this.YahooSearch.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.YahooSearch.DownBack = null;
             this.YahooSearch.Location = new System.Drawing.Point(545, 3);
@@ -251,6 +255,7 @@
             // 
             // Bing
             // 
+            this.Bing.BackColor = System.Drawing.Color.White;
             this.Bing.Controls.Add(this.BingSearch);
             this.Bing.Controls.Add(this.BingInput);
             this.Bing.Location = new System.Drawing.Point(0, 36);
@@ -259,12 +264,12 @@
             this.Bing.Size = new System.Drawing.Size(637, 40);
             this.Bing.TabIndex = 2;
             this.Bing.Text = "Bing";
-            this.Bing.UseVisualStyleBackColor = true;
             this.Bing.Click += new System.EventHandler(this.BingTabClick);
             // 
             // BingSearch
             // 
             this.BingSearch.BackColor = System.Drawing.Color.Transparent;
+            this.BingSearch.BaseColor = System.Drawing.Color.DodgerBlue;
             this.BingSearch.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.BingSearch.DownBack = null;
             this.BingSearch.Location = new System.Drawing.Point(545, 3);
@@ -321,6 +326,7 @@
             // 
             // YouTube
             // 
+            this.YouTube.BackColor = System.Drawing.Color.White;
             this.YouTube.Controls.Add(this.YouTubeSearch);
             this.YouTube.Controls.Add(this.YouTubeInput);
             this.YouTube.Location = new System.Drawing.Point(0, 36);
@@ -329,12 +335,12 @@
             this.YouTube.Size = new System.Drawing.Size(637, 40);
             this.YouTube.TabIndex = 3;
             this.YouTube.Text = "YouTube";
-            this.YouTube.UseVisualStyleBackColor = true;
             this.YouTube.Click += new System.EventHandler(this.YouTubeTabClick);
             // 
             // YouTubeSearch
             // 
             this.YouTubeSearch.BackColor = System.Drawing.Color.Transparent;
+            this.YouTubeSearch.BaseColor = System.Drawing.Color.DodgerBlue;
             this.YouTubeSearch.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.YouTubeSearch.DownBack = null;
             this.YouTubeSearch.Location = new System.Drawing.Point(545, 3);
@@ -391,6 +397,7 @@
             // 
             // googlePlay
             // 
+            this.googlePlay.BackColor = System.Drawing.Color.White;
             this.googlePlay.Controls.Add(this.GooglePlaySearch);
             this.googlePlay.Controls.Add(this.GooglePlayInput);
             this.googlePlay.Location = new System.Drawing.Point(0, 36);
@@ -399,12 +406,12 @@
             this.googlePlay.Size = new System.Drawing.Size(637, 40);
             this.googlePlay.TabIndex = 4;
             this.googlePlay.Text = "GooglePlay";
-            this.googlePlay.UseVisualStyleBackColor = true;
             this.googlePlay.Click += new System.EventHandler(this.PlayTabClick);
             // 
             // GooglePlaySearch
             // 
             this.GooglePlaySearch.BackColor = System.Drawing.Color.Transparent;
+            this.GooglePlaySearch.BaseColor = System.Drawing.Color.DodgerBlue;
             this.GooglePlaySearch.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.GooglePlaySearch.DownBack = null;
             this.GooglePlaySearch.Location = new System.Drawing.Point(545, 3);
@@ -461,6 +468,7 @@
             // 
             // amazon
             // 
+            this.amazon.BackColor = System.Drawing.Color.White;
             this.amazon.Controls.Add(this.amazonSearchButton);
             this.amazon.Controls.Add(this.amazonInput);
             this.amazon.Location = new System.Drawing.Point(0, 36);
@@ -469,12 +477,12 @@
             this.amazon.Size = new System.Drawing.Size(637, 40);
             this.amazon.TabIndex = 5;
             this.amazon.Text = "Amazon";
-            this.amazon.UseVisualStyleBackColor = true;
             this.amazon.Click += new System.EventHandler(this.AmazonTabClick);
             // 
             // amazonSearchButton
             // 
             this.amazonSearchButton.BackColor = System.Drawing.Color.Transparent;
+            this.amazonSearchButton.BaseColor = System.Drawing.Color.DodgerBlue;
             this.amazonSearchButton.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.amazonSearchButton.DownBack = null;
             this.amazonSearchButton.Location = new System.Drawing.Point(545, 3);
@@ -532,13 +540,14 @@
             // export
             // 
             this.export.BackColor = System.Drawing.Color.Transparent;
+            this.export.BaseColor = System.Drawing.Color.DodgerBlue;
             this.export.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.export.DownBack = null;
-            this.export.Location = new System.Drawing.Point(553, 384);
+            this.export.Location = new System.Drawing.Point(553, 394);
             this.export.MouseBack = null;
             this.export.Name = "export";
             this.export.NormlBack = null;
-            this.export.Size = new System.Drawing.Size(119, 39);
+            this.export.Size = new System.Drawing.Size(119, 29);
             this.export.TabIndex = 6;
             this.export.Text = "GenExcel";
             this.export.UseVisualStyleBackColor = false;
@@ -547,13 +556,14 @@
             // clear
             // 
             this.clear.BackColor = System.Drawing.Color.Transparent;
+            this.clear.BaseColor = System.Drawing.Color.DodgerBlue;
             this.clear.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.clear.DownBack = null;
-            this.clear.Location = new System.Drawing.Point(431, 384);
+            this.clear.Location = new System.Drawing.Point(431, 394);
             this.clear.MouseBack = null;
             this.clear.Name = "clear";
             this.clear.NormlBack = null;
-            this.clear.Size = new System.Drawing.Size(116, 39);
+            this.clear.Size = new System.Drawing.Size(116, 29);
             this.clear.TabIndex = 7;
             this.clear.Text = "Clear";
             this.clear.UseVisualStyleBackColor = false;
@@ -561,13 +571,18 @@
             // 
             // resultListView
             // 
+            this.resultListView.BorderColor = System.Drawing.Color.LightBlue;
+            this.resultListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.resultListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Term,
             this.KeyWord});
+            this.resultListView.HeadColor = System.Drawing.Color.AliceBlue;
+            this.resultListView.HideSelection = false;
             this.resultListView.Location = new System.Drawing.Point(35, 178);
             this.resultListView.Name = "resultListView";
             this.resultListView.OwnerDraw = true;
-            this.resultListView.Size = new System.Drawing.Size(637, 186);
+            this.resultListView.SelectedColor = System.Drawing.Color.White;
+            this.resultListView.Size = new System.Drawing.Size(637, 210);
             this.resultListView.TabIndex = 8;
             this.resultListView.UseCompatibleStateImageBehavior = false;
             this.resultListView.View = System.Windows.Forms.View.Details;
@@ -580,13 +595,13 @@
             // KeyWord
             // 
             this.KeyWord.Text = "KeyWord";
-            this.KeyWord.Width = 315;
+            this.KeyWord.Width = 319;
             // 
             // ProgressIndicator
             // 
             this.ProgressIndicator.BackColor = System.Drawing.Color.White;
             this.ProgressIndicator.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ProgressIndicator.Location = new System.Drawing.Point(337, 263);
+            this.ProgressIndicator.Location = new System.Drawing.Point(337, 268);
             this.ProgressIndicator.Name = "ProgressIndicator";
             this.ProgressIndicator.Percentage = 0F;
             this.ProgressIndicator.Size = new System.Drawing.Size(45, 45);
@@ -597,15 +612,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(712, 430);
             this.Controls.Add(this.ProgressIndicator);
             this.Controls.Add(this.resultListView);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.export);
             this.Controls.Add(this.skinTabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "MainForm";
+            this.Text = "Search";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.skinTabControl.ResumeLayout(false);
             this.google.ResumeLayout(false);

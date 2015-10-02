@@ -321,7 +321,7 @@ namespace WindowsFormsApplication1
         private void ClearClick(object sender, EventArgs e)
         {
             Console.Write("ClearClick");
-            //this.resultListView.Items.Clear();
+            this.resultListView.Items.Clear();
         }
 
         private void showProgress()
