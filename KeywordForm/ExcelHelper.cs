@@ -11,33 +11,14 @@ namespace Excel
 {
     class ExcelHelper
     {
-        public static void exportExcel(string enginName, string keyword, List<SearchTerm> result)
+        public static void exportExcel(string enginName, string keyword, string saveFileName, List<SearchTerm> result)
         {
-            if(result == null || result.Count == 0)
-            {
-                MessageBox.Show("结果为空");
-                return ;
-            }
-            string title = enginName + " - " + keyword;
-            //选择框
-            SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.DefaultExt = "xls";
-            saveDialog.AddExtension = true;
-            saveDialog.Filter = "Excel 文件|*.xls";
-            saveDialog.FileName = title + ".xls";
-            //保存对话框是否记忆上次打开的目录
-            saveDialog.RestoreDirectory = true;
-            DialogResult saveResult = saveDialog.ShowDialog();
-            if (saveResult == DialogResult.Cancel)
-            {
-                return;
-            }
-            string saveFileName = saveDialog.FileName;
-            MessageBox.Show("选择的文件为：\r\n" + saveFileName);
+
             if (string.IsNullOrEmpty(saveFileName))
             {
                 return;
             }
+            string title = enginName + " - " + keyword;
             Microsoft.Office.Interop.Excel.Application xls = null;
             Workbook workbook = null;
             try
