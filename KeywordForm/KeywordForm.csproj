@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>lib\json\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -76,11 +79,12 @@
   <ItemGroup>
     <Compile Include="AmazonEngin.cs" />
     <Compile Include="BingEngin.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ExcelHelper.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GoogleEngin.cs" />
     <Compile Include="GooglePlayEngin.cs" />
@@ -91,8 +95,8 @@
     <Compile Include="SearchTerm.cs" />
     <Compile Include="YahooEngin.cs" />
     <Compile Include="YoutubeEngin.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
