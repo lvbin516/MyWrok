@@ -369,6 +369,7 @@ namespace WindowsFormsApplication1
 
             String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWord);
             Object[] param = new object[4] { currentEngin, currentKeyWord, fileName, mTempResult };
+            this.export.Enabled = false;
             Thread t = new Thread(genExcel);
             t.Start(param);
         }
