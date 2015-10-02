@@ -14,6 +14,7 @@ namespace Http
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+                request.Proxy = null;
                 request.Method = "POST";
                 request.ContentType = "application/x-www-form-urlencoded";
                 request.ContentLength = Encoding.UTF8.GetByteCount(postDataStr);
@@ -48,6 +49,7 @@ namespace Http
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+                request.Proxy = null;
                 request.Method = "GET";
                 request.ContentType = "text/html;charset=UTF-8";
 

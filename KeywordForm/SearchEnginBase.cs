@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Http;
+using System.Collections.Concurrent;
+using System.Threading;
+using KeywordForm;
 
 namespace SearchEngin
 {
@@ -21,6 +24,9 @@ namespace SearchEngin
                                               6, 7, 8, 9, 10
                                           };
 
+        private const int THREAD_NUM = 39;
+
+        //搜索关键字
         public List<SearchTerm> SearchKeyWordByTerm(string term)
         {
             if (term == null || term.Trim().Length == 0)
@@ -32,27 +38,79 @@ namespace SearchEngin
             {
                 return null;
             }
+            ConcurrentDictionary<string, List<SearchTerm>> conMap = new ConcurrentDictionary<string, List<SearchTerm>>();
+
+            //创建搜索线程
+            createSearchThread(conMap, terms, THREAD_NUM);
+
+            List<SearchTerm> empty = null;
             List<SearchTerm> result = new List<SearchTerm>();
-            foreach(string newTerm in terms)
+            foreach (string t in terms)
             {
-                string searchUrl = getSearchUrl(newTerm);
-                string searchResponse = HttpHelper.HttpGet(searchUrl);
-                if (searchResponse == null || searchResponse.Trim().Length == 0)
+                List<SearchTerm> subResult = conMap.GetOrAdd(t, empty);
+                if (subResult == null || subResult.Count == 0)
                 {
                     continue;
                 }
-                List<string> keywords = parseKeywordsFromResponse(searchResponse);
-                if (keywords == null || keywords.Count == 0)
-                {
-                    continue;
-                }
-                foreach (string keyword in keywords)
-                {
-                    SearchTerm s = new SearchTerm();
-                    s.Term = newTerm;
-                    s.Keyword = keyword;
-                    result.Add(s);
-                }
+                result.AddRange(subResult);
+            }
+            return result;
+        }
+
+        private void createSearchThread(ConcurrentDictionary<string, List<SearchTerm>> conMap, List<string> terms, int threadNum)
+        {
+            if(threadNum <= 0)
+            {
+                threadNum = THREAD_NUM;
+            }
+            if(conMap == null || terms == null || terms.Count == 0)
+            {
+                return ;
+            }
+
+            int numPerThread = terms.Count / threadNum;
+            if (terms.Count % threadNum != 0)
+            {
+                numPerThread += 1;
+            }
+
+            List<Thread> searchThread = new List<Thread>();
+            for (int i = 0; i < threadNum; i++)
+            {
+                int start = i * numPerThread;
+                int end = start + numPerThread;
+                SearchThread st = new SearchThread(this, terms, start, end, conMap);
+                Thread t = new Thread(st.searchByThread);
+                t.Start();
+                searchThread.Add(t);
+            }
+            foreach (Thread st in searchThread)
+            {
+                st.Join();
+            }
+        }
+
+        public List<SearchTerm> SearchKeyWordByTerm0(string term)
+        {
+            List<SearchTerm> result = new List<SearchTerm>();
+
+            string searchUrl = getSearchUrl(term);
+            string searchResponse = HttpHelper.HttpGet(searchUrl);
+            if (searchResponse == null || searchResponse.Trim().Length == 0)
+            {
+                return null;
+            }
+            List<string> keywords = parseKeywordsFromResponse(searchResponse);
+            if (keywords == null || keywords.Count == 0)
+            {
+                return null;
+            }
+            foreach (string keyword in keywords)
+           {
+                SearchTerm s = new SearchTerm();
+                s.Term = term;
+                s.Keyword = keyword;
+                result.Add(s);
             }
             return result;
         }
