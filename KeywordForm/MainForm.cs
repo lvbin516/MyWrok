@@ -10,6 +10,7 @@ using CCWin;
 using SearchEngin;
 using CCWin.SkinControl;
 using System.Threading;
+using Excel;
 
 namespace WindowsFormsApplication1
 {
@@ -36,7 +37,10 @@ namespace WindowsFormsApplication1
         private String YouTubeKeyWord;
         private String PlayKeyWord;
         private String AmazonKeyWord;
-
+        private TYPE mType;
+        enum TYPE{
+            GOOGLE, YAHOO, BING, YOUTUBE, PLAY, AMAZON
+        }
 
         public Form1()
         {
@@ -80,6 +84,7 @@ namespace WindowsFormsApplication1
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List < SearchTerm >)result);
             this.googleSearch.Enabled = true;
+            mType = TYPE.GOOGLE;
             hideProgress();
         }
 
@@ -118,6 +123,7 @@ namespace WindowsFormsApplication1
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
             this.YahooSearch.Enabled = true;
+            mType = TYPE.YAHOO;
             hideProgress();
         }
 
@@ -156,6 +162,7 @@ namespace WindowsFormsApplication1
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
             this.BingSearch.Enabled = true;
+            mType = TYPE.BING;
             hideProgress();
         }
 
@@ -194,6 +201,7 @@ namespace WindowsFormsApplication1
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
             this.YouTubeSearch.Enabled = true;
+            mType = TYPE.YOUTUBE;
             hideProgress();
         }
 
@@ -233,6 +241,7 @@ namespace WindowsFormsApplication1
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
             this.GooglePlaySearch.Enabled = true;
+            mType = TYPE.PLAY;
             hideProgress();
         }
 
@@ -271,6 +280,7 @@ namespace WindowsFormsApplication1
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
             this.amazonSearchButton.Enabled = true;
+            mType = TYPE.AMAZON;
             hideProgress();
         }
 
@@ -293,6 +303,7 @@ namespace WindowsFormsApplication1
             Console.Write("amazonSearchIconClick");
         }
 
+        private List<SearchTerm> mTempResult;
         private void showResultOnList(List<SearchTerm> result)
         {
             if (result == null || result.Count == 0)
@@ -301,6 +312,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
+                mTempResult = result;
                 this.resultListView.BeginUpdate();
                 foreach (SearchTerm s in result)
                 {
@@ -316,6 +328,55 @@ namespace WindowsFormsApplication1
         private void GenExcelClick(object sender, EventArgs e)
         {
             Console.Write("GenExcelClick");
+            String currentKeyWord;
+            String currentEngin;
+            switch (mType)
+            {
+                case TYPE.GOOGLE:
+                    currentEngin = "google";
+                    currentKeyWord = googleKeyWord;
+                    break;
+                case TYPE.YAHOO:
+                    currentKeyWord = YahooKeyWord;
+                    currentEngin = "yahoo";
+                    break;
+
+                case TYPE.BING:
+                    currentEngin = "bing";
+                    currentKeyWord = BingKeyWord;
+                    break;
+
+                case TYPE.YOUTUBE:
+                    currentEngin = "youtube";
+                    currentKeyWord = YouTubeKeyWord;
+                    break;
+
+                case TYPE.PLAY:
+                    currentEngin = "google play";
+                    currentKeyWord = PlayKeyWord;
+                    break;
+
+                case TYPE.AMAZON:
+                    currentEngin = "amazon";
+                    currentKeyWord = AmazonKeyWord;
+                    break;
+                default:
+                    currentKeyWord = "";
+                    currentEngin = "";
+                    break;
+
+            }
+
+            Object[] param = new object[3] { currentEngin, currentKeyWord, mTempResult };
+            Thread t = new Thread(genExcel);
+            t.Start(param);
+        }
+
+        private void genExcel(Object param)
+        {
+            Object[] obj = (Object[])param;
+            //need modify
+            ExcelHelper.exportExcel((String)obj[0], (String)obj[1], (List<SearchTerm>)obj[2]);
         }
 
         private void ClearClick(object sender, EventArgs e)
