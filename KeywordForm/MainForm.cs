@@ -24,6 +24,8 @@ namespace SearchApplication
         private SearchEnginBase mGooglePlayEngin;
         private SearchEnginBase mAmazonEngin;
 
+        SynchronizationContext _syncContext = null;
+
         private delegate void GCallBackDelegate(Object result);
         private delegate void YCallBackDelegate(Object result);
         private delegate void BCallBackDelegate(Object result);
@@ -47,6 +49,7 @@ namespace SearchApplication
         public Form1()
         {
             InitializeComponent();
+            _syncContext = SynchronizationContext.Current; 
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,9 +88,7 @@ namespace SearchApplication
         {
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List < SearchTerm >)result);
-            this.googleSearch.Enabled = true;
             mType = TYPE.GOOGLE;
-            hideProgress();
         }
 
          private void gExecutorInThread(Object callBack)
@@ -124,9 +125,7 @@ namespace SearchApplication
         {
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
-            this.YahooSearch.Enabled = true;
             mType = TYPE.YAHOO;
-            hideProgress();
         }
 
         private void yExecutorInThread(Object callBack)
@@ -156,6 +155,7 @@ namespace SearchApplication
             showProgress();
             BCallBackDelegate cbd = bCallBack;
             Thread t = new Thread(bExecutorInThread);
+            t.IsBackground = true;
             t.Start(cbd);
         }
 
@@ -163,9 +163,7 @@ namespace SearchApplication
         {
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
-            this.BingSearch.Enabled = true;
             mType = TYPE.BING;
-            hideProgress();
         }
 
         private void bExecutorInThread(Object callBack)
@@ -202,9 +200,7 @@ namespace SearchApplication
         {
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
-            this.YouTubeSearch.Enabled = true;
             mType = TYPE.YOUTUBE;
-            hideProgress();
         }
 
         private void tExecutorInThread(Object callBack)
@@ -242,9 +238,7 @@ namespace SearchApplication
         {
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
-            this.GooglePlaySearch.Enabled = true;
             mType = TYPE.PLAY;
-            hideProgress();
         }
 
         private void pExecutorInThread(Object callBack)
@@ -281,9 +275,7 @@ namespace SearchApplication
         {
             //主线程报告信息,可以根据这个信息做判断操作,执行不同逻辑.
             showResultOnList((List<SearchTerm>)result);
-            this.amazonSearchButton.Enabled = true;
             mType = TYPE.AMAZON;
-            hideProgress();
         }
 
         private void aExecutorInThread(Object callBack)
@@ -308,15 +300,21 @@ namespace SearchApplication
         private List<SearchTerm> mTempResult;
         private void showResultOnList(List<SearchTerm> result)
         {
-            if (result == null || result.Count == 0)
+            _syncContext.Post(showResult, result);
+        }
+
+        private void showResult(Object result) {
+            hideProgress();
+            List<SearchTerm> temp = (List<SearchTerm>)result;
+            if (temp == null || temp.Count == 0)
             {
                 showMessageTip();
             }
             else
             {
-                mTempResult = result;
+                mTempResult = temp;
                 this.resultListView.BeginUpdate();
-                foreach (SearchTerm s in result)
+                foreach (SearchTerm s in temp)
                 {
                     string[] s1 = { s.Term, s.Keyword };
                     ListViewItem item = new ListViewItem(s1);
@@ -370,6 +368,7 @@ namespace SearchApplication
             }
             if (!checkExcel())
             {
+                MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
                 return;
             }
             String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWord);
@@ -424,6 +423,12 @@ namespace SearchApplication
 
         private bool checkExcel()
         {
+           
+            Type type = Type.GetTypeFromProgID("Excel.Application");
+            if(type == null) {
+                return false;
+            }
+
             Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
             if (xls == null)
             {
@@ -452,6 +457,13 @@ namespace SearchApplication
 
         private void hideProgress()
         {
+            this.YahooSearch.Enabled = true;
+            this.googleSearch.Enabled = true;
+            this.amazonSearchButton.Enabled = true;
+            this.GooglePlaySearch.Enabled = true;
+            this.BingSearch.Enabled = true;
+            this.YouTubeSearch.Enabled = true;
+
             this.ProgressIndicator.Visible = false;
             this.ProgressIndicator.Stop();
         }
