@@ -14,7 +14,6 @@ namespace KeywordForm
         private int start;
         private int end;
         private ConcurrentDictionary<string, List<SearchTerm>> conMap;
-        private SearchEnginBase searchEnginBase;
 
         public SearchThread(SearchEnginBase engin, List<string> terms, int start, int end, ConcurrentDictionary<string, List<SearchTerm>> conMap)
         {
