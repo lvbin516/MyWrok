@@ -391,6 +391,11 @@ namespace SearchApplication
 
         private void excelCallBack()
         {
+            _syncContext.Post(showTip, new Object());
+        }
+
+        private void showTip(Object obj)
+        {
             this.export.Enabled = true;
             MessageBoxEx.Show(this, "Generate Excel Success");
         }
