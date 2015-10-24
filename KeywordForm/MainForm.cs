@@ -397,7 +397,7 @@ namespace SearchApplication
         private void showTip(Object obj)
         {
             this.export.Enabled = true;
-            MessageBoxEx.Show(this, "Generate Excel Success");
+            MessageBoxEx.Show(this, "Export sucessfully!");
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
@@ -437,7 +437,7 @@ namespace SearchApplication
             Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
             if (xls == null)
             {
-                MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
+                MessageBoxEx.Show(this, "Can't create excel file, please make sure you have installed Excel correctly!");
                 return false;
             }
             else
@@ -473,5 +473,77 @@ namespace SearchApplication
             this.ProgressIndicator.Stop();
         }
 
+        private void googleInputEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 && this.googleSearch.Enabled == true)
+            {
+                googleSearchClick_Click(null, null);
+            }
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void yahooInputEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 && this.YahooSearch.Enabled == true)
+            {
+                YahooSearchClick(null, null);
+            }
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void bingInputEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 && this.BingSearch.Enabled == true)
+            {
+                BingSearchIconClick(null, null);
+            }
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void youtubeInputEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 && this.YouTubeSearch.Enabled == true)
+            {
+                YouTubeSearchIconClick(null, null);
+            }
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void playInputEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 && this.GooglePlaySearch.Enabled == true)
+            {
+                PlaySearchIconClick(null, null);
+            }
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void amazonInputEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13 && this.amazonSearchButton.Enabled == true)
+            {
+                amazonSearchIconClick(null, null);
+            }
+
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

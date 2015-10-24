@@ -156,7 +156,7 @@
             this.googleInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.googleInput.MouseBack = null;
             this.googleInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.googleInput.Multiline = true;
+            this.googleInput.Multiline = false;
             this.googleInput.Name = "googleInput";
             this.googleInput.NormlBack = null;
             this.googleInput.Padding = new System.Windows.Forms.Padding(5);
@@ -170,16 +170,16 @@
             this.googleInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.googleInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.googleInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.googleInput.SkinTxt.Multiline = true;
             this.googleInput.SkinTxt.Name = "BaseText";
-            this.googleInput.SkinTxt.Size = new System.Drawing.Size(529, 24);
+            this.googleInput.SkinTxt.Size = new System.Drawing.Size(529, 18);
             this.googleInput.SkinTxt.TabIndex = 0;
             this.googleInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.googleInput.SkinTxt.WaterText = "type a key word and press enter ";
+            this.googleInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
+            this.googleInput.SkinTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.googleInputEnter);
             this.googleInput.TabIndex = 0;
             this.googleInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.googleInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.googleInput.WaterText = "type a key word and press enter ";
+            this.googleInput.WaterText = "Enter a keyword or phrase here";
             this.googleInput.WordWrap = true;
             // 
             // Yahoo
@@ -218,6 +218,7 @@
             this.YahooInput.Icon = null;
             this.YahooInput.IconIsButton = false;
             this.YahooInput.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.YahooInput.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.YahooInput.IsPasswordChat = '\0';
             this.YahooInput.IsSystemPasswordChar = false;
             this.YahooInput.Lines = new string[0];
@@ -227,7 +228,7 @@
             this.YahooInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.YahooInput.MouseBack = null;
             this.YahooInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.YahooInput.Multiline = true;
+            this.YahooInput.Multiline = false;
             this.YahooInput.Name = "YahooInput";
             this.YahooInput.NormlBack = null;
             this.YahooInput.Padding = new System.Windows.Forms.Padding(5);
@@ -241,16 +242,16 @@
             this.YahooInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.YahooInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.YahooInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.YahooInput.SkinTxt.Multiline = true;
             this.YahooInput.SkinTxt.Name = "BaseText";
-            this.YahooInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
+            this.YahooInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
             this.YahooInput.SkinTxt.TabIndex = 0;
             this.YahooInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.YahooInput.SkinTxt.WaterText = "type a key word and press enter ";
+            this.YahooInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
+            this.YahooInput.SkinTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.yahooInputEnter);
             this.YahooInput.TabIndex = 1;
             this.YahooInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.YahooInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.YahooInput.WaterText = "type a key word and press enter ";
+            this.YahooInput.WaterText = "Enter a keyword or phrase here";
             this.YahooInput.WordWrap = true;
             // 
             // Bing
@@ -298,7 +299,7 @@
             this.BingInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.BingInput.MouseBack = null;
             this.BingInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.BingInput.Multiline = true;
+            this.BingInput.Multiline = false;
             this.BingInput.Name = "BingInput";
             this.BingInput.NormlBack = null;
             this.BingInput.Padding = new System.Windows.Forms.Padding(5);
@@ -312,16 +313,16 @@
             this.BingInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BingInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.BingInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.BingInput.SkinTxt.Multiline = true;
             this.BingInput.SkinTxt.Name = "BaseText";
-            this.BingInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
+            this.BingInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
             this.BingInput.SkinTxt.TabIndex = 0;
             this.BingInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BingInput.SkinTxt.WaterText = "type a key word and press enter ";
+            this.BingInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
+            this.BingInput.SkinTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bingInputEnter);
             this.BingInput.TabIndex = 1;
             this.BingInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.BingInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.BingInput.WaterText = "type a key word and press enter ";
+            this.BingInput.WaterText = "Enter a keyword or phrase here";
             this.BingInput.WordWrap = true;
             // 
             // YouTube
@@ -369,7 +370,7 @@
             this.YouTubeInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.YouTubeInput.MouseBack = null;
             this.YouTubeInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.YouTubeInput.Multiline = true;
+            this.YouTubeInput.Multiline = false;
             this.YouTubeInput.Name = "YouTubeInput";
             this.YouTubeInput.NormlBack = null;
             this.YouTubeInput.Padding = new System.Windows.Forms.Padding(5);
@@ -383,16 +384,16 @@
             this.YouTubeInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.YouTubeInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.YouTubeInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.YouTubeInput.SkinTxt.Multiline = true;
             this.YouTubeInput.SkinTxt.Name = "BaseText";
-            this.YouTubeInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
+            this.YouTubeInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
             this.YouTubeInput.SkinTxt.TabIndex = 0;
             this.YouTubeInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.YouTubeInput.SkinTxt.WaterText = "type a key word and press enter ";
+            this.YouTubeInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
+            this.YouTubeInput.SkinTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.youtubeInputEnter);
             this.YouTubeInput.TabIndex = 1;
             this.YouTubeInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.YouTubeInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.YouTubeInput.WaterText = "type a key word and press enter ";
+            this.YouTubeInput.WaterText = "Enter a keyword or phrase here";
             this.YouTubeInput.WordWrap = true;
             // 
             // googlePlay
@@ -405,7 +406,7 @@
             this.googlePlay.Padding = new System.Windows.Forms.Padding(3);
             this.googlePlay.Size = new System.Drawing.Size(637, 40);
             this.googlePlay.TabIndex = 4;
-            this.googlePlay.Text = "GooglePlay";
+            this.googlePlay.Text = "Google Play";
             this.googlePlay.Click += new System.EventHandler(this.PlayTabClick);
             // 
             // GooglePlaySearch
@@ -440,7 +441,7 @@
             this.GooglePlayInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.GooglePlayInput.MouseBack = null;
             this.GooglePlayInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.GooglePlayInput.Multiline = true;
+            this.GooglePlayInput.Multiline = false;
             this.GooglePlayInput.Name = "GooglePlayInput";
             this.GooglePlayInput.NormlBack = null;
             this.GooglePlayInput.Padding = new System.Windows.Forms.Padding(5);
@@ -454,16 +455,16 @@
             this.GooglePlayInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GooglePlayInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.GooglePlayInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.GooglePlayInput.SkinTxt.Multiline = true;
             this.GooglePlayInput.SkinTxt.Name = "BaseText";
-            this.GooglePlayInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
+            this.GooglePlayInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
             this.GooglePlayInput.SkinTxt.TabIndex = 0;
             this.GooglePlayInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GooglePlayInput.SkinTxt.WaterText = "type a key word and press enter ";
+            this.GooglePlayInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
+            this.GooglePlayInput.SkinTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.playInputEnter);
             this.GooglePlayInput.TabIndex = 1;
             this.GooglePlayInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.GooglePlayInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.GooglePlayInput.WaterText = "type a key word and press enter ";
+            this.GooglePlayInput.WaterText = "Enter a keyword or phrase here";
             this.GooglePlayInput.WordWrap = true;
             // 
             // amazon
@@ -511,7 +512,7 @@
             this.amazonInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.amazonInput.MouseBack = null;
             this.amazonInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.amazonInput.Multiline = true;
+            this.amazonInput.Multiline = false;
             this.amazonInput.Name = "amazonInput";
             this.amazonInput.NormlBack = null;
             this.amazonInput.Padding = new System.Windows.Forms.Padding(5);
@@ -525,16 +526,16 @@
             this.amazonInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.amazonInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.amazonInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
-            this.amazonInput.SkinTxt.Multiline = true;
             this.amazonInput.SkinTxt.Name = "BaseText";
-            this.amazonInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
+            this.amazonInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
             this.amazonInput.SkinTxt.TabIndex = 0;
             this.amazonInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.amazonInput.SkinTxt.WaterText = "type a key word and press enter ";
+            this.amazonInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
+            this.amazonInput.SkinTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.amazonInputEnter);
             this.amazonInput.TabIndex = 1;
             this.amazonInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.amazonInput.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.amazonInput.WaterText = "type a key word and press enter ";
+            this.amazonInput.WaterText = "Enter a keyword or phrase here";
             this.amazonInput.WordWrap = true;
             // 
             // export
@@ -549,7 +550,7 @@
             this.export.NormlBack = null;
             this.export.Size = new System.Drawing.Size(119, 29);
             this.export.TabIndex = 6;
-            this.export.Text = "GenExcel";
+            this.export.Text = "Export";
             this.export.UseVisualStyleBackColor = false;
             this.export.Click += new System.EventHandler(this.GenExcelClick);
             // 
@@ -590,12 +591,12 @@
             // 
             // Term
             // 
-            this.Term.Text = "Term";
+            this.Term.Text = "Search Terms";
             this.Term.Width = 317;
             // 
             // KeyWord
             // 
-            this.KeyWord.Text = "KeyWord";
+            this.KeyWord.Text = "Keywords";
             this.KeyWord.Width = 319;
             // 
             // ProgressIndicator
@@ -621,6 +622,7 @@
             this.Controls.Add(this.export);
             this.Controls.Add(this.skinTabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Search";
             this.Load += new System.EventHandler(this.Form1_Load);

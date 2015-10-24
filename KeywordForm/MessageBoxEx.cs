@@ -171,7 +171,7 @@ namespace KeywordForm
 
             if (_owner != null)
             {
-                _hHook = SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, AppDomain.GetCurrentThreadId());
+                _hHook = SetWindowsHookEx(WH_CALLWNDPROCRET, _hookProc, IntPtr.Zero, (int)System.Threading.Thread.CurrentThread.ManagedThreadId);
             }
         }
 
