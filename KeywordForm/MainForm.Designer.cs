@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CCWin.SkinControl.Animation animation1 = new CCWin.SkinControl.Animation();
+            CCWin.SkinControl.Animation animation12 = new CCWin.SkinControl.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.skinTabControl = new CCWin.SkinControl.SkinTabControl();
             this.google = new System.Windows.Forms.TabPage();
@@ -55,6 +55,7 @@
             this.Term = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.KeyWord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProgressIndicator = new CCWin.SkinControl.SkinProgressIndicator();
+            this.trialLable = new System.Windows.Forms.Label();
             this.skinTabControl.SuspendLayout();
             this.google.SuspendLayout();
             this.Yahoo.SuspendLayout();
@@ -66,22 +67,22 @@
             // 
             // skinTabControl
             // 
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 1F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.skinTabControl.Animation = animation1;
+            animation12.AnimateOnlyDifferences = true;
+            animation12.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.BlindCoeff")));
+            animation12.LeafCoeff = 1F;
+            animation12.MaxTime = 1F;
+            animation12.MinTime = 0F;
+            animation12.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicCoeff")));
+            animation12.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicShift")));
+            animation12.MosaicSize = 0;
+            animation12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation12.RotateCoeff = 0F;
+            animation12.RotateLimit = 0F;
+            animation12.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.ScaleCoeff")));
+            animation12.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.SlideCoeff")));
+            animation12.TimeCoeff = 0F;
+            animation12.TransparencyCoeff = 0F;
+            this.skinTabControl.Animation = animation12;
             this.skinTabControl.AnimatorType = CCWin.SkinControl.AnimationType.Leaf;
             this.skinTabControl.CloseRect = new System.Drawing.Rectangle(2, 2, 12, 12);
             this.skinTabControl.Controls.Add(this.google);
@@ -156,7 +157,7 @@
             this.googleInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.googleInput.MouseBack = null;
             this.googleInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.googleInput.Multiline = false;
+            this.googleInput.Multiline = true;
             this.googleInput.Name = "googleInput";
             this.googleInput.NormlBack = null;
             this.googleInput.Padding = new System.Windows.Forms.Padding(5);
@@ -170,8 +171,9 @@
             this.googleInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.googleInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.googleInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.googleInput.SkinTxt.Multiline = true;
             this.googleInput.SkinTxt.Name = "BaseText";
-            this.googleInput.SkinTxt.Size = new System.Drawing.Size(529, 18);
+            this.googleInput.SkinTxt.Size = new System.Drawing.Size(529, 24);
             this.googleInput.SkinTxt.TabIndex = 0;
             this.googleInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.googleInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
@@ -228,7 +230,7 @@
             this.YahooInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.YahooInput.MouseBack = null;
             this.YahooInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.YahooInput.Multiline = false;
+            this.YahooInput.Multiline = true;
             this.YahooInput.Name = "YahooInput";
             this.YahooInput.NormlBack = null;
             this.YahooInput.Padding = new System.Windows.Forms.Padding(5);
@@ -242,8 +244,9 @@
             this.YahooInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.YahooInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.YahooInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.YahooInput.SkinTxt.Multiline = true;
             this.YahooInput.SkinTxt.Name = "BaseText";
-            this.YahooInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
+            this.YahooInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
             this.YahooInput.SkinTxt.TabIndex = 0;
             this.YahooInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.YahooInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
@@ -299,7 +302,7 @@
             this.BingInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.BingInput.MouseBack = null;
             this.BingInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.BingInput.Multiline = false;
+            this.BingInput.Multiline = true;
             this.BingInput.Name = "BingInput";
             this.BingInput.NormlBack = null;
             this.BingInput.Padding = new System.Windows.Forms.Padding(5);
@@ -313,8 +316,9 @@
             this.BingInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BingInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.BingInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.BingInput.SkinTxt.Multiline = true;
             this.BingInput.SkinTxt.Name = "BaseText";
-            this.BingInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
+            this.BingInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
             this.BingInput.SkinTxt.TabIndex = 0;
             this.BingInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BingInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
@@ -370,7 +374,7 @@
             this.YouTubeInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.YouTubeInput.MouseBack = null;
             this.YouTubeInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.YouTubeInput.Multiline = false;
+            this.YouTubeInput.Multiline = true;
             this.YouTubeInput.Name = "YouTubeInput";
             this.YouTubeInput.NormlBack = null;
             this.YouTubeInput.Padding = new System.Windows.Forms.Padding(5);
@@ -384,8 +388,9 @@
             this.YouTubeInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.YouTubeInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.YouTubeInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.YouTubeInput.SkinTxt.Multiline = true;
             this.YouTubeInput.SkinTxt.Name = "BaseText";
-            this.YouTubeInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
+            this.YouTubeInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
             this.YouTubeInput.SkinTxt.TabIndex = 0;
             this.YouTubeInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.YouTubeInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
@@ -441,7 +446,7 @@
             this.GooglePlayInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.GooglePlayInput.MouseBack = null;
             this.GooglePlayInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.GooglePlayInput.Multiline = false;
+            this.GooglePlayInput.Multiline = true;
             this.GooglePlayInput.Name = "GooglePlayInput";
             this.GooglePlayInput.NormlBack = null;
             this.GooglePlayInput.Padding = new System.Windows.Forms.Padding(5);
@@ -455,8 +460,9 @@
             this.GooglePlayInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GooglePlayInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.GooglePlayInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.GooglePlayInput.SkinTxt.Multiline = true;
             this.GooglePlayInput.SkinTxt.Name = "BaseText";
-            this.GooglePlayInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
+            this.GooglePlayInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
             this.GooglePlayInput.SkinTxt.TabIndex = 0;
             this.GooglePlayInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.GooglePlayInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
@@ -512,7 +518,7 @@
             this.amazonInput.MinimumSize = new System.Drawing.Size(28, 28);
             this.amazonInput.MouseBack = null;
             this.amazonInput.MouseState = CCWin.SkinClass.ControlState.Normal;
-            this.amazonInput.Multiline = false;
+            this.amazonInput.Multiline = true;
             this.amazonInput.Name = "amazonInput";
             this.amazonInput.NormlBack = null;
             this.amazonInput.Padding = new System.Windows.Forms.Padding(5);
@@ -526,8 +532,9 @@
             this.amazonInput.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.amazonInput.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
             this.amazonInput.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.amazonInput.SkinTxt.Multiline = true;
             this.amazonInput.SkinTxt.Name = "BaseText";
-            this.amazonInput.SkinTxt.Size = new System.Drawing.Size(527, 18);
+            this.amazonInput.SkinTxt.Size = new System.Drawing.Size(527, 24);
             this.amazonInput.SkinTxt.TabIndex = 0;
             this.amazonInput.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.amazonInput.SkinTxt.WaterText = "Enter a keyword or phrase here";
@@ -610,12 +617,27 @@
             this.ProgressIndicator.TabIndex = 9;
             this.ProgressIndicator.Visible = false;
             // 
+            // trialLable
+            // 
+            this.trialLable.AutoSize = true;
+            this.trialLable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trialLable.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.trialLable.ForeColor = System.Drawing.Color.Blue;
+            this.trialLable.Location = new System.Drawing.Point(64, 7);
+            this.trialLable.Name = "trialLable";
+            this.trialLable.Size = new System.Drawing.Size(95, 12);
+            this.trialLable.TabIndex = 10;
+            this.trialLable.Text = "(Trial Version)";
+            this.trialLable.Click += new System.EventHandler(this.trialLable_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CanResize = false;
             this.ClientSize = new System.Drawing.Size(712, 430);
+            this.Controls.Add(this.trialLable);
             this.Controls.Add(this.ProgressIndicator);
             this.Controls.Add(this.resultListView);
             this.Controls.Add(this.clear);
@@ -634,6 +656,7 @@
             this.googlePlay.ResumeLayout(false);
             this.amazon.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -664,6 +687,7 @@
         private System.Windows.Forms.ColumnHeader Term;
         private System.Windows.Forms.ColumnHeader KeyWord;
         private CCWin.SkinControl.SkinProgressIndicator ProgressIndicator;
+        private System.Windows.Forms.Label trialLable;
     }
 }
 

@@ -6,11 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using CCWin;
 using SearchEngin;
 using CCWin.SkinControl;
 using System.Threading;
 using Excel;
+using KeywordForm;
+using CCWin;
+using System.IO;
+using System.Text.RegularExpressions;
+using EncrypterUtils;
 
 namespace SearchApplication
 {
@@ -23,6 +27,20 @@ namespace SearchApplication
         private SearchEnginBase mYouTubeEngin;
         private SearchEnginBase mGooglePlayEngin;
         private SearchEnginBase mAmazonEngin;
+
+        private bool isActivate;
+
+        public bool IsActivate
+        {
+            get
+            {
+                return isActivate;
+            }
+            set
+            {
+                this.isActivate = value;
+            }
+        }
 
         SynchronizationContext _syncContext = null;
 
@@ -49,7 +67,38 @@ namespace SearchApplication
         public Form1()
         {
             InitializeComponent();
-            _syncContext = SynchronizationContext.Current; 
+            _syncContext = SynchronizationContext.Current;
+            //判断是否已经激活
+            this.isActivate = validateIsActivate();
+            if (this.isActivate)
+            {
+                this.trialLable.Visible = false;
+            }
+        }
+
+        public void updateActivateStatus(bool isActivate)
+        {
+            this.isActivate = isActivate;
+            this.trialLable.Visible = false;
+        }
+
+        private bool validateIsActivate()
+        {
+            try
+            {
+                //获取安装目录
+                String installDir = Application.StartupPath;
+                //读取key文件
+                FileStream fs = new FileStream(installDir + "\\data.bin", FileMode.Open, FileAccess.Read, FileShare.None);
+                StreamReader sr = new StreamReader(fs, Encoding.UTF8);
+                string serialNumber = sr.ReadLine();
+                sr.Close();
+                return Encrypter.ValidateSerialNumber(serialNumber);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,7 +143,7 @@ namespace SearchApplication
          private void gExecutorInThread(Object callBack)
         {
             //子线程执行
-            List<SearchTerm> result = mGoogleEngin.SearchKeyWordByTerm(googleKeyWord);
+            List<SearchTerm> result = mGoogleEngin.SearchKeyWordByTerm(googleKeyWord, this.isActivate);
             GCallBackDelegate cbd = callBack as GCallBackDelegate;
             cbd(result);
         }
@@ -131,7 +180,7 @@ namespace SearchApplication
         private void yExecutorInThread(Object callBack)
         {
             //子线程执行
-            List<SearchTerm> result = mYahooEngin.SearchKeyWordByTerm(YahooKeyWord);
+            List<SearchTerm> result = mYahooEngin.SearchKeyWordByTerm(YahooKeyWord, this.isActivate);
             YCallBackDelegate cbd = callBack as YCallBackDelegate;
             cbd(result);
         }
@@ -169,7 +218,7 @@ namespace SearchApplication
         private void bExecutorInThread(Object callBack)
         {
             //子线程执行
-            List<SearchTerm> result = mBingEngin.SearchKeyWordByTerm(BingKeyWord);
+            List<SearchTerm> result = mBingEngin.SearchKeyWordByTerm(BingKeyWord, this.isActivate);
             BCallBackDelegate cbd = callBack as BCallBackDelegate;
             cbd(result);
         }
@@ -206,7 +255,7 @@ namespace SearchApplication
         private void tExecutorInThread(Object callBack)
         {
             //子线程执行
-            List<SearchTerm> result = mYouTubeEngin.SearchKeyWordByTerm(YouTubeKeyWord);
+            List<SearchTerm> result = mYouTubeEngin.SearchKeyWordByTerm(YouTubeKeyWord, this.isActivate);
             TCallBackDelegate cbd = callBack as TCallBackDelegate;
             cbd(result);
         }
@@ -244,7 +293,7 @@ namespace SearchApplication
         private void pExecutorInThread(Object callBack)
         {
             //子线程执行
-            List<SearchTerm> result = this.mGooglePlayEngin.SearchKeyWordByTerm(PlayKeyWord);
+            List<SearchTerm> result = this.mGooglePlayEngin.SearchKeyWordByTerm(PlayKeyWord, this.isActivate);
             PCallBackDelegate cbd = callBack as PCallBackDelegate;
             cbd(result);
         }
@@ -281,7 +330,7 @@ namespace SearchApplication
         private void aExecutorInThread(Object callBack)
         {
             //子线程执行
-            List<SearchTerm> result = mAmazonEngin.SearchKeyWordByTerm(AmazonKeyWord);
+            List<SearchTerm> result = mAmazonEngin.SearchKeyWordByTerm(AmazonKeyWord, this.isActivate);
             ACallBackDelegate cbd = callBack as ACallBackDelegate;
             cbd(result);
         }
@@ -368,7 +417,7 @@ namespace SearchApplication
             }
             if (!checkExcel())
             {
-                MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
+                CCWin.MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
                 return;
             }
             String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWord);
@@ -397,14 +446,14 @@ namespace SearchApplication
         private void showTip(Object obj)
         {
             this.export.Enabled = true;
-            MessageBoxEx.Show(this, "Export sucessfully!");
+            CCWin.MessageBoxEx.Show(this, "Export sucessfully!");
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
         {
             if (result == null || result.Count == 0)
             {
-                MessageBoxEx.Show(this, "result is empty");
+                CCWin.MessageBoxEx.Show(this, "result is empty");
                 return null;
             }
             string title = enginName + " - " + keyword;
@@ -437,7 +486,7 @@ namespace SearchApplication
             Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
             if (xls == null)
             {
-                MessageBoxEx.Show(this, "Can't create excel file, please make sure you have installed Excel correctly!");
+                CCWin.MessageBoxEx.Show(this, "Can't create excel file, please make sure you have installed Excel correctly!");
                 return false;
             }
             else
@@ -545,5 +594,13 @@ namespace SearchApplication
                 e.Handled = true;
             }
         }
+
+        private void trialLable_Click(object sender, EventArgs e)
+        {
+            ActivateForm frm = new ActivateForm(this);
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.ShowDialog();
+        }
+
     }
 }

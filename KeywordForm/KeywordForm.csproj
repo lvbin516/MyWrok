@@ -82,6 +82,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivateForm.Designer.cs">
+      <DependentUpon>ActivateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AmazonEngin.cs" />
     <Compile Include="BingEngin.cs" />
     <Compile Include="Encrypter.cs" />
@@ -103,6 +109,9 @@
     <Compile Include="SearchThread.cs" />
     <Compile Include="YahooEngin.cs" />
     <Compile Include="YoutubeEngin.cs" />
+    <EmbeddedResource Include="ActivateForm.resx">
+      <DependentUpon>ActivateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

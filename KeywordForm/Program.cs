@@ -28,7 +28,7 @@ namespace SearchApplication
 
             sw.WriteLine("Google:");
             SearchEnginBase google = new GoogleEngin();
-            List<SearchTerm> result0 = google.SearchKeyWordByTerm("iphone");
+            List<SearchTerm> result0 = google.SearchKeyWordByTerm("iphone", true);
             if (result0 == null || result0.Count == 0)
             {
                 sw.WriteLine("search result is empty!");
@@ -45,7 +45,7 @@ namespace SearchApplication
 
             sw.WriteLine("Bing:");
             SearchEnginBase bing = new BingEngin();
-            List<SearchTerm> result1 = bing.SearchKeyWordByTerm("iphone");
+            List<SearchTerm> result1 = bing.SearchKeyWordByTerm("iphone", true);
             if (result1 == null || result1.Count == 0)
             {
                 sw.WriteLine("search result is empty!");
@@ -63,7 +63,7 @@ namespace SearchApplication
 
             sw.WriteLine("Yahoo:");
             SearchEnginBase yahoo = new YahooEngin();
-            List<SearchTerm> result2 = yahoo.SearchKeyWordByTerm("iphone");
+            List<SearchTerm> result2 = yahoo.SearchKeyWordByTerm("iphone", true);
             if (result2 == null || result2.Count == 0)
             {
                 sw.WriteLine("search result is empty!");
@@ -81,7 +81,7 @@ namespace SearchApplication
 
             sw.WriteLine("YouTuBe:");
             SearchEnginBase youtube = new YoutubeEngin();
-            List<SearchTerm> result3 = youtube.SearchKeyWordByTerm("iphone");
+            List<SearchTerm> result3 = youtube.SearchKeyWordByTerm("iphone", true);
             if (result3 == null || result3.Count == 0)
             {
                 sw.WriteLine("search result is empty!");
@@ -98,7 +98,7 @@ namespace SearchApplication
 
             sw.WriteLine("Google Play:");
             SearchEnginBase googlePlay = new GooglePlayEngin();
-            List<SearchTerm> result4 = googlePlay.SearchKeyWordByTerm("iphone");
+            List<SearchTerm> result4 = googlePlay.SearchKeyWordByTerm("iphone", true);
             if (result4 == null || result4.Count == 0)
             {
                 sw.WriteLine("search result is empty!");
@@ -116,7 +116,7 @@ namespace SearchApplication
 
             sw.WriteLine("Amazon:");
             SearchEnginBase amazon = new AmazonEngin();
-            List<SearchTerm> result5 = amazon.SearchKeyWordByTerm("iphone");
+            List<SearchTerm> result5 = amazon.SearchKeyWordByTerm("iphone", true);
             if (result5 == null || result5.Count == 0)
             {
                 sw.WriteLine("search result is empty!");
