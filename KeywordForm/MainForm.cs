@@ -376,6 +376,11 @@ namespace SearchApplication
 
         private void GenExcelClick(object sender, EventArgs e)
         {
+            if (!this.isActivate)
+            {
+                trialLable_Click(null, null);
+                return;
+            }
             Console.Write("GenExcelClick");
             String currentKeyWord;
             String currentEngin;
