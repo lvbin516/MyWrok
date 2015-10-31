@@ -352,7 +352,7 @@ namespace SearchApplication
 
         private void showMessageTip()
         {
-            //MessageBoxEx.Show(this, "key word can not be empty!");
+            //MyMessageBoxEx.show("key word can not be empty!");
         }
 
 
@@ -489,7 +489,7 @@ namespace SearchApplication
             }
             if (!checkExcel())
             {
-                CCWin.MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
+                MyMessageBoxEx.show("can not creat excel. make sure you have install excel!");
                 return;
             }
             String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWordTemp);
@@ -518,14 +518,14 @@ namespace SearchApplication
         private void showTip(Object obj)
         {
             this.export.Enabled = true;
-            CCWin.MessageBoxEx.Show(this, "Export successfully!");
+            MyMessageBoxEx.show("Export successfully!");
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
         {
             if (result == null || result.Count == 0)
             {
-                CCWin.MessageBoxEx.Show(this, "result is empty");
+                MyMessageBoxEx.show("result is empty");
                 return null;
             }
             string title = enginName + " - " + keyword;
@@ -558,7 +558,7 @@ namespace SearchApplication
             Microsoft.Office.Interop.Excel.Application  xls = new Microsoft.Office.Interop.Excel.Application();
             if (xls == null)
             {
-                CCWin.MessageBoxEx.Show(this, "Can't create excel file, please make sure you have installed Excel correctly!");
+                MyMessageBoxEx.show("Can't create excel file, please make sure you have installed Excel correctly!");
                 return false;
             }
             else
