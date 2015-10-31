@@ -193,7 +193,6 @@
             this.activateBtn.TabIndex = 4;
             this.activateBtn.Text = "Activate";
             this.activateBtn.UseVisualStyleBackColor = false;
-            this.activateBtn.UseWaitCursor = true;
             this.activateBtn.Click += new System.EventHandler(this.activateBtn_Click);
             // 
             // ActivateForm
