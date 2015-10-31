@@ -26,13 +26,13 @@ namespace Excel
                 xls = new Microsoft.Office.Interop.Excel.Application();
                 workbook = xls.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
                 Worksheet worksheet = workbook.Worksheets[1] as Worksheet;
-                addRange(worksheet, "C3", "D4", System.Drawing.Color.Green.ToArgb(), title, 20);
-                addCell(worksheet, 6, 3, System.Drawing.Color.Gray.ToArgb(), "Search Terms", 20);
-                addCell(worksheet, 6, 4, System.Drawing.Color.Gray.ToArgb(), "Keywords", 20);
+                addRange(worksheet, "A1", "B2", System.Drawing.Color.Green.ToArgb(), title, 20);
+                addCell(worksheet, 4, 1, System.Drawing.Color.Gray.ToArgb(), "Search Terms", 20);
+                addCell(worksheet, 4, 2, System.Drawing.Color.Gray.ToArgb(), "Keywords", 20);
                 for (int i = 0; i < result.Count; i++ )
                 {
-                    addCell(worksheet, i + 7, 3, System.Drawing.Color.White.ToArgb(), result[i].Term, 20);
-                    addCell(worksheet, i + 7, 4, System.Drawing.Color.White.ToArgb(), result[i].Keyword, 20);
+                    addCell(worksheet, i + 5, 1, System.Drawing.Color.White.ToArgb(), result[i].Term, 20);
+                    addCell(worksheet, i + 5, 2, System.Drawing.Color.White.ToArgb(), result[i].Keyword, 20);
                 }
                 worksheet.SaveAs(saveFileName, XlFileFormat.xlTemplate, Type.Missing, Type.Missing, Type.Missing, 
                     Type.Missing, XlSaveAsAccessMode.xlNoChange, Type.Missing, Type.Missing, Type.Missing);
