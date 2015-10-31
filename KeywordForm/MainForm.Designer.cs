@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            CCWin.SkinControl.Animation animation12 = new CCWin.SkinControl.Animation();
+            CCWin.SkinControl.Animation animation3 = new CCWin.SkinControl.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.skinTabControl = new CCWin.SkinControl.SkinTabControl();
             this.google = new System.Windows.Forms.TabPage();
@@ -56,6 +56,7 @@
             this.KeyWord = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ProgressIndicator = new CCWin.SkinControl.SkinProgressIndicator();
             this.trialLable = new System.Windows.Forms.Label();
+            this.EmptyTipLab = new CCWin.SkinControl.SkinLabel();
             this.skinTabControl.SuspendLayout();
             this.google.SuspendLayout();
             this.Yahoo.SuspendLayout();
@@ -67,22 +68,22 @@
             // 
             // skinTabControl
             // 
-            animation12.AnimateOnlyDifferences = true;
-            animation12.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.BlindCoeff")));
-            animation12.LeafCoeff = 1F;
-            animation12.MaxTime = 1F;
-            animation12.MinTime = 0F;
-            animation12.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicCoeff")));
-            animation12.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation12.MosaicShift")));
-            animation12.MosaicSize = 0;
-            animation12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            animation12.RotateCoeff = 0F;
-            animation12.RotateLimit = 0F;
-            animation12.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.ScaleCoeff")));
-            animation12.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation12.SlideCoeff")));
-            animation12.TimeCoeff = 0F;
-            animation12.TransparencyCoeff = 0F;
-            this.skinTabControl.Animation = animation12;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 1F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            animation3.RotateCoeff = 0F;
+            animation3.RotateLimit = 0F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 0F;
+            this.skinTabControl.Animation = animation3;
             this.skinTabControl.AnimatorType = CCWin.SkinControl.AnimationType.Leaf;
             this.skinTabControl.CloseRect = new System.Drawing.Rectangle(2, 2, 12, 12);
             this.skinTabControl.Controls.Add(this.google);
@@ -623,12 +624,25 @@
             this.trialLable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trialLable.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.trialLable.ForeColor = System.Drawing.Color.Blue;
-            this.trialLable.Location = new System.Drawing.Point(64, 7);
+            this.trialLable.Location = new System.Drawing.Point(101, 7);
             this.trialLable.Name = "trialLable";
             this.trialLable.Size = new System.Drawing.Size(95, 12);
             this.trialLable.TabIndex = 10;
             this.trialLable.Text = "(Trial Version)";
             this.trialLable.Click += new System.EventHandler(this.trialLable_Click);
+            // 
+            // EmptyTipLab
+            // 
+            this.EmptyTipLab.AutoSize = true;
+            this.EmptyTipLab.BackColor = System.Drawing.Color.Transparent;
+            this.EmptyTipLab.BorderColor = System.Drawing.Color.White;
+            this.EmptyTipLab.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.EmptyTipLab.Location = new System.Drawing.Point(38, 206);
+            this.EmptyTipLab.Name = "EmptyTipLab";
+            this.EmptyTipLab.Size = new System.Drawing.Size(327, 17);
+            this.EmptyTipLab.TabIndex = 11;
+            this.EmptyTipLab.Text = "Please try again or choose another keyword to search.";
+            this.EmptyTipLab.Visible = false;
             // 
             // Form1
             // 
@@ -637,6 +651,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CanResize = false;
             this.ClientSize = new System.Drawing.Size(712, 430);
+            this.Controls.Add(this.EmptyTipLab);
             this.Controls.Add(this.trialLable);
             this.Controls.Add(this.ProgressIndicator);
             this.Controls.Add(this.resultListView);
@@ -646,7 +661,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Search";
+            this.Text = "FindMyNiche";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.skinTabControl.ResumeLayout(false);
             this.google.ResumeLayout(false);
@@ -688,6 +703,7 @@
         private System.Windows.Forms.ColumnHeader KeyWord;
         private CCWin.SkinControl.SkinProgressIndicator ProgressIndicator;
         private System.Windows.Forms.Label trialLable;
+        private CCWin.SkinControl.SkinLabel EmptyTipLab;
     }
 }
 

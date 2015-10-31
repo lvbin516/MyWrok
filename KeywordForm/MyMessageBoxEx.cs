@@ -11,7 +11,7 @@ namespace KeywordForm
     using System.Drawing;
     using System.Runtime.InteropServices;
 
-    public class MessageBoxEx
+    public class MyMessageBoxEx
     {
         private static IWin32Window _owner;
         private static HookProc _hookProc;
@@ -156,7 +156,7 @@ namespace KeywordForm
             public IntPtr hwnd;
         } ;
 
-        static MessageBoxEx()
+        static MyMessageBoxEx()
         {
             _hookProc = new HookProc(MessageBoxHookProc);
             _hHook = IntPtr.Zero;

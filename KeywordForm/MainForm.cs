@@ -59,6 +59,9 @@ namespace SearchApplication
         private String YouTubeKeyWord;
         private String PlayKeyWord;
         private String AmazonKeyWord;
+
+        private String currentKeyWord;
+
         private TYPE mType;
         enum TYPE{
             GOOGLE, YAHOO, BING, YOUTUBE, PLAY, AMAZON
@@ -127,6 +130,8 @@ namespace SearchApplication
                 showMessageTip();
                 return;
             }
+            currentKeyWord = googleKeyWord;
+
             showProgress();
             this.googleSearch.Enabled = false;
             GCallBackDelegate cbd = gCallBack;
@@ -163,6 +168,8 @@ namespace SearchApplication
                 showMessageTip();
                 return;
             }
+            currentKeyWord = YahooKeyWord;
+
             showProgress();
             this.YahooSearch.Enabled = false;
             YCallBackDelegate cbd = yCallBack;
@@ -201,6 +208,8 @@ namespace SearchApplication
                 return;
             }
             this.BingSearch.Enabled = false;
+
+            currentKeyWord = BingKeyWord;
             showProgress();
             BCallBackDelegate cbd = bCallBack;
             Thread t = new Thread(bExecutorInThread);
@@ -238,6 +247,8 @@ namespace SearchApplication
                 showMessageTip();
                 return;
             }
+            currentKeyWord = YouTubeKeyWord;
+
             showProgress();
             this.YouTubeSearch.Enabled = false;
             TCallBackDelegate cbd = tCallBack;
@@ -275,6 +286,8 @@ namespace SearchApplication
                 showMessageTip();
                 return;
             }
+            currentKeyWord = PlayKeyWord;
+
             showProgress();
             this.GooglePlaySearch.Enabled = false;
             PCallBackDelegate cbd = pCallBack;
@@ -313,6 +326,8 @@ namespace SearchApplication
                 showMessageTip();
                 return;
             }
+            currentKeyWord = AmazonKeyWord;
+
             showProgress();
             this.amazonSearchButton.Enabled = false;
             ACallBackDelegate cbd = aCallBack;
@@ -344,6 +359,39 @@ namespace SearchApplication
         private void SearchTabIndexChange(object sender, EventArgs e)
         {
             Console.Write("amazonSearchIconClick");
+            this.EmptyTipLab.Visible = false;
+            SkinTabControl skinTab = (SkinTabControl)sender;
+            int index = skinTab.SelectedIndex;
+            if (currentKeyWord == null || "".Equals(currentKeyWord))
+            {
+                return;
+            }
+            switch (index)
+            {
+                case 0:
+                    this.googleInput.Text = currentKeyWord;
+                    break;
+
+                case 1:
+                    this.YahooInput.Text = currentKeyWord;
+                    break;
+
+                case 2:
+                    this.BingInput.Text = currentKeyWord;
+                    break;
+
+                case 3:
+                    this.YouTubeInput.Text = currentKeyWord;
+                    break;
+
+                case 4:
+                    this.GooglePlayInput.Text = currentKeyWord;
+                    break;
+
+                case 5:
+                    this.amazonInput.Text = currentKeyWord;
+                    break;
+            }
         }
 
         private List<SearchTerm> mTempResult;
@@ -357,13 +405,15 @@ namespace SearchApplication
             List<SearchTerm> temp = (List<SearchTerm>)result;
             if (temp == null || temp.Count == 0)
             {
-                showMessageTip();
+                //showMessageTip();
+                this.EmptyTipLab.Visible = true;
             }
             else
             {
-                mTempResult = temp;
+
+                mTempResult = removeTheSame(temp);
                 this.resultListView.BeginUpdate();
-                foreach (SearchTerm s in temp)
+                foreach (SearchTerm s in mTempResult)
                 {
                     string[] s1 = { s.Term, s.Keyword };
                     ListViewItem item = new ListViewItem(s1);
@@ -371,6 +421,23 @@ namespace SearchApplication
                 }
                 this.resultListView.EndUpdate();
             }
+        }
+
+        private List<SearchTerm> removeTheSame(List<SearchTerm> temp)
+        {
+            List<SearchTerm> nonDuplicateList = new List<SearchTerm>();
+            List<String> keywords = new List<String>();
+
+            foreach (SearchTerm term in temp)
+            {
+                if (!keywords.Contains(term.Keyword.Trim()))
+                {
+                    keywords.Add(term.Keyword.Trim());
+                    nonDuplicateList.Add(term);
+                }
+                   
+            }
+            return nonDuplicateList;
         }
 
 
@@ -382,40 +449,40 @@ namespace SearchApplication
                 return;
             }
             Console.Write("GenExcelClick");
-            String currentKeyWord;
+            String currentKeyWordTemp;
             String currentEngin;
             switch (mType)
             {
                 case TYPE.GOOGLE:
                     currentEngin = "google";
-                    currentKeyWord = googleKeyWord;
+                    currentKeyWordTemp = googleKeyWord;
                     break;
                 case TYPE.YAHOO:
-                    currentKeyWord = YahooKeyWord;
+                    currentKeyWordTemp = YahooKeyWord;
                     currentEngin = "yahoo";
                     break;
 
                 case TYPE.BING:
                     currentEngin = "bing";
-                    currentKeyWord = BingKeyWord;
+                    currentKeyWordTemp = BingKeyWord;
                     break;
 
                 case TYPE.YOUTUBE:
                     currentEngin = "youtube";
-                    currentKeyWord = YouTubeKeyWord;
+                    currentKeyWordTemp = YouTubeKeyWord;
                     break;
 
                 case TYPE.PLAY:
                     currentEngin = "google play";
-                    currentKeyWord = PlayKeyWord;
+                    currentKeyWordTemp = PlayKeyWord;
                     break;
 
                 case TYPE.AMAZON:
                     currentEngin = "amazon";
-                    currentKeyWord = AmazonKeyWord;
+                    currentKeyWordTemp = AmazonKeyWord;
                     break;
                 default:
-                    currentKeyWord = "";
+                    currentKeyWordTemp = "";
                     currentEngin = "";
                     break;
 
@@ -425,9 +492,9 @@ namespace SearchApplication
                 CCWin.MessageBoxEx.Show(this, "can not creat excel. make sure you have install excel!");
                 return;
             }
-            String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWord);
+            String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWordTemp);
             GenExcelCallBackDelegate callback = excelCallBack;
-            Object[] param = new object[5] { currentEngin, currentKeyWord, fileName, mTempResult, callback };
+            Object[] param = new object[5] { currentEngin, currentKeyWordTemp, fileName, mTempResult, callback };
             
             this.export.Enabled = false;
             Thread t = new Thread(genExcel);
@@ -451,7 +518,7 @@ namespace SearchApplication
         private void showTip(Object obj)
         {
             this.export.Enabled = true;
-            CCWin.MessageBoxEx.Show(this, "Export sucessfully!");
+            CCWin.MessageBoxEx.Show(this, "Export successfully!");
         }
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
@@ -509,6 +576,7 @@ namespace SearchApplication
 
         private void showProgress()
         {
+            this.EmptyTipLab.Visible = false;
             this.resultListView.Items.Clear();
             this.ProgressIndicator.Visible = true;
             this.ProgressIndicator.Start();

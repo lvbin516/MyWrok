@@ -139,7 +139,7 @@ namespace SearchEngin
             List<string> result = new List<string>();
             result.Add(term);
 
-            if (isActivate)
+            if (true)
             {
                 result.Add(term + " ");
 

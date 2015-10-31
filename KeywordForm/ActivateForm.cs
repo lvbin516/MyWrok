@@ -27,6 +27,7 @@ namespace KeywordForm
             //校验mail
             if (this.mailInput.Text == null || this.mailInput.Text.Trim().Length == 0)
             {
+                //CCWin.MessageBoxEx.Show(this, "please enter the License mail.");
                 CCWin.MessageBoxEx.Show(this, "please enter the License mail.");
                 return;
             }
@@ -34,6 +35,7 @@ namespace KeywordForm
             //校验Serial Number
             if (this.numberInput.Text == null || this.numberInput.Text.Trim().Length == 0)
             {
+                //CCWin.MessageBoxEx.Show(this, "please enter the Serial number.");
                 CCWin.MessageBoxEx.Show(this, "please enter the Serial number.");
                 return;
             }
@@ -44,13 +46,13 @@ namespace KeywordForm
                 //激活成功 写文件
                 writeSerialNumberToFile(this.numberInput.Text.Trim(), this.mailInput.Text.Trim());
                 this.parent.updateActivateStatus(true);
-                CCWin.MessageBoxEx.Show(this, "Activate sucessfully!");
+                CCWin.MessageBoxEx.Show(this, "Activate successfully!");
                 this.Close();
             }
             else
             {
                 //激活失败
-                CCWin.MessageBoxEx.Show(this, "Incorrect Serial number, please check and try again.");
+                CCWin.MessageBoxEx.Show(this, "Invalid serial number, please try again or contact the Viavert support team.");
             }
         }
 
@@ -75,13 +77,14 @@ namespace KeywordForm
             }
             catch (Exception ex)
             {
+                Console.Write(ex.Message);
             }
         }
 
         private void buyNow_Click(object sender, EventArgs e)
         {
             //调用系统默认的浏览器   
-            System.Diagnostics.Process.Start("http://www.baidu.com");
+            System.Diagnostics.Process.Start("https://order.shareit.com/product?vendorid=200252623&productid=300696975");
         }
 
     }
