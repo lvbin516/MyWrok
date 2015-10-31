@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyMessageBoxForm));
             this.messageLabel = new CCWin.SkinControl.SkinLabel();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.CanResize = false;
             this.ClientSize = new System.Drawing.Size(106, 83);
             this.Controls.Add(this.messageLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MyMessageBoxForm";
