@@ -82,7 +82,7 @@ namespace KeywordForm
         private void buyNow_Click(object sender, EventArgs e)
         {
             //调用系统默认的浏览器   
-            System.Diagnostics.Process.Start("https://order.shareit.com/product?vendorid=200252623&productid=300696975");
+            System.Diagnostics.Process.Start("IEXPLORE.EXE", "https://order.shareit.com/product?vendorid=200252623&productid=300696975");
         }
 
         private void ActivateForm_Load(object sender, EventArgs e)
