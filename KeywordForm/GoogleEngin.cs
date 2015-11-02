@@ -56,6 +56,7 @@ namespace SearchEngin
                 string keyword = keywordJa[0].ToString();
                 keyword = keyword.Replace("<b>", "");
                 keyword = keyword.Replace("</b>", "");
+                keyword = HttpUtility.UrlDecode(keyword, Encoding.UTF8);
                 result.Add(keyword);
              }
             return result;
