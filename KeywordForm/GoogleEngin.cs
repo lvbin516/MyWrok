@@ -5,6 +5,8 @@ using System.Text;
 using System.Web;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Winista.Text.HtmlParser;
+using Winista.Text.HtmlParser.Data;
 
 namespace SearchEngin
 {
@@ -56,7 +58,16 @@ namespace SearchEngin
                 string keyword = keywordJa[0].ToString();
                 keyword = keyword.Replace("<b>", "");
                 keyword = keyword.Replace("</b>", "");
-                keyword = HttpUtility.UrlDecode(keyword, Encoding.UTF8);
+                //替换特殊字符
+                keyword = keyword.Replace("&#160;", " ");
+                keyword = keyword.Replace("&#60;", "<");
+                keyword = keyword.Replace("&#62;", ">");
+                keyword = keyword.Replace("&#38;", "&");
+                keyword = keyword.Replace("&#34;", "\"");
+                keyword = keyword.Replace("&#39;", "'");
+                keyword = keyword.Replace("&#215;", "×");
+                keyword = keyword.Replace("&#247;", "÷");
+
                 result.Add(keyword);
              }
             return result;

@@ -24,7 +24,7 @@ namespace SearchEngin
                                               6, 7, 8, 9, 10
                                           };
 
-        private int THREAD_NUM = Environment.ProcessorCount; 
+        private int THREAD_NUM = Environment.ProcessorCount;
 
         //搜索关键字
         public List<SearchTerm> SearchKeyWordByTerm(string term, bool isActivate)

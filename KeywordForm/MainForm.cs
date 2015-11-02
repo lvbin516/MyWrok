@@ -492,6 +492,13 @@ namespace SearchApplication
                 MyMessageBoxEx.show("can not creat excel. make sure you have install excel!");
                 return;
             }
+
+            if (mTempResult == null || mTempResult.Count == 0)
+            {
+                MyMessageBoxEx.show("result is empty");
+                return;
+            }
+
             String fileName = showFileSelectDialog(mTempResult, currentEngin, currentKeyWordTemp);
             GenExcelCallBackDelegate callback = excelCallBack;
             Object[] param = new object[5] { currentEngin, currentKeyWordTemp, fileName, mTempResult, callback };
@@ -523,11 +530,6 @@ namespace SearchApplication
 
         private String showFileSelectDialog(List<SearchTerm> result, String enginName, String keyword)
         {
-            if (result == null || result.Count == 0)
-            {
-                MyMessageBoxEx.show("result is empty");
-                return null;
-            }
             string title = enginName + " - " + keyword;
             //选择框
             SaveFileDialog saveDialog = new SaveFileDialog();

@@ -27,14 +27,14 @@ namespace KeywordForm
             //校验mail
             if (this.mailInput.Text == null || this.mailInput.Text.Trim().Length == 0)
             {
-                MyMessageBoxEx.show("please enter the License mail.");
+                MyMessageBoxEx.show("Please enter your License mail and Serial number.");
                 return;
             }
 
             //校验Serial Number
             if (this.numberInput.Text == null || this.numberInput.Text.Trim().Length == 0)
             {
-                MyMessageBoxEx.show("please enter the Serial number.");
+                MyMessageBoxEx.show("Please enter your License mail and Serial number.");
                 return;
             }
             //验证激活码
@@ -81,8 +81,16 @@ namespace KeywordForm
 
         private void buyNow_Click(object sender, EventArgs e)
         {
-            //调用系统默认的浏览器   
-            System.Diagnostics.Process.Start("IEXPLORE.EXE", "https://order.shareit.com/product?vendorid=200252623&productid=300696975");
+            //调用系统默认的浏览
+            try
+            {
+                System.Diagnostics.Process.Start("https://order.shareit.com/product?vendorid=200252623&productid=300696975");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Process.Start("IEXPLORE.EXE", "https://order.shareit.com/product?vendorid=200252623&productid=300696975");
+            }
+            
         }
 
         private void ActivateForm_Load(object sender, EventArgs e)
